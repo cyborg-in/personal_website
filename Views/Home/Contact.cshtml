@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Contact";
+    ViewData["Message"] = "Let's start a project together!";
+}
+
+<div class="container">
+    <div style="padding-top: 70px;">
+        <h2>@ViewData["Message"]</h2>
+
+        <p>Below is my contact information.  Phones are nice, but emails are better.</p>
+
+        <address>
+            804 Washington St., #2C<br />
+            Evanston, IL 60202<br />
+            <abbr title="Cell Phone">c.</abbr> (614) 562-0180<br />
+            <abbr title="Email Address">e.</abbr>&nbsp;<a href="mailto:mcataloe@gmail.com?subject=Solution%20Inquiry" target="_blank">mcataloe@gmail.com</a>
+        </address>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-sm-6">
+        <form asp-controller="Home" asp-action="SendEmail" method="post">
+            <div class="form-group">
+                <input class="form-control" asp-for="FirstName" />
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" name="LastName" type="text" placeholder="Last Name" required />
+            </div>
+
+            <div class="form-group">
+                <input class="form-control" name="Email" type="email" placeholder="Email" required />
+            </div>   
+
+            <div class="form-group">
+                <textarea class="form-control" name="Comments" placeholder="Type your questions here" required></textarea>
+            </div> 
+
+            <input class="btn btn-primary btn-lg" method="post" asp-controller="Home" asp-action="SendEmail" value="Send Email">
+        </form>
+    </div>
+</div>
