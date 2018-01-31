@@ -20,7 +20,7 @@ namespace PersonalWebsite
 
             using (var scope = host.Services.CreateScope())
             {
-                try 
+                try
                 {
                     var context = host.Services.GetRequiredService<WebsiteContext>();
                     DbInitializer.SeedDatabase(context);
@@ -33,9 +33,12 @@ namespace PersonalWebsite
             }     
         }
 
-        public static IWebHost BuildWebHost(string[] args) 
-        {
-            return WebHost.CreateDefaultBuilder(args).UseStartup<Startup>().Build();
-        }
+        public static IWebHost BuildWebHost(string[] args) =>
+            new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseStartup<Startup>()
+                .Build();
     }
 }
