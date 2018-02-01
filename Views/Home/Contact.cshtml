@@ -1,9 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Contact";
-    ViewData["Message"] = "Let's start a project together!";
-}
-
-<div class="container">
+﻿<div class="container">
     <div style="padding-top: 70px;">
         <h2>@ViewData["Message"]</h2>
 
@@ -22,7 +17,7 @@
     <div class="col-sm-6">
         <form asp-controller="Home" asp-action="SendEmail" method="post">
             <div class="form-group">
-                <input class="form-control" asp-for="FirstName" />
+                <input class="form-control" name="FirstName" type="text" placeholder="First Name" required />
             </div>
 
             <div class="form-group">

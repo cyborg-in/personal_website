@@ -1,16 +1,8 @@
 ﻿body {
-    background-color: #4C4B53;
+    background-color: #444444;
     color: white;
-    font-family: PillGothic, sans-serif;
+    font-family: pill_gothic, sans-serif;
     letter-spacing: 1.5px;
-}
-
-.nav {
-    background-color: #4C4B53;
-}
-
-.orange-color {
-    color: #D19769;
 }
 
 a:hover {
@@ -105,7 +97,6 @@ div .about p {
     font-size: 72px;
     vertical-align: middle;
     background-color: rgba(0, 0, 0, 0.35);
-    text-transform: uppercase;
 }
 
 .caption span.border {
@@ -158,17 +149,8 @@ div .about p {
     color: black;
 }
 
-.nav-item:hover {
-    text-decoration: underline;
-    transition: 0.2s;
-}
-
-.alert .btn .text {
-    background-color: rgba
-}
-
 @font-face {
-    font-family: PillGothic;
+    font-family:  pill_gothic;
     src: url('/fonts/pill_gothic.ttf');
 }
 

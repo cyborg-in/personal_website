@@ -30,21 +30,14 @@ namespace PersonalWebsite
                     var logger = host.Services.GetRequiredService<ILogger<Program>>();
                     logger.LogError(ex, "An error occurred while seeding the database.");
                 }
-            }
-
-            host.Run();
+            }     
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
-
-            // new WebHostBuilder()
-            //     .UseKestrel()
-            //     .UseContentRoot(Directory.GetCurrentDirectory())
-            //     .UseIISIntegration()
-            //     .UseStartup<Startup>()
-            //     .Build();
-
-            WebHost.CreateDefaultBuilder(args)
+            new WebHostBuilder()
+                .UseKestrel()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
     }
