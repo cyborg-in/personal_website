@@ -25,17 +25,17 @@
     <div class="col-sm-6">
         <form asp-controller="Home" asp-action="SendEmail" method="post">
             <div class="form-group">
-                <input id="FirstName" class="form-control" name="FirstName" type="text" required />
-                <label for="FirstName" class="floating-label">First Name</label>
+                <input id="FirstName" class="form-control" name="FirstName" type="text" placeholder="First Name" required />
+                <!-- <label for="FirstName" class="floating-label">First Name</label> -->
             </div>
 
             <div class="form-group">
-                <input id="LastName" class="form-control" name="LastName" type="text" required />
+                <input id="LastName" class="form-control" name="LastName" type="text" placeholder="Last Name" required />
                 <!-- <label for="LastName" class="floating-label">Last Name</label> -->
             </div>
 
             <div class="form-group">
-                <input id="Email" class="form-control" name="Email" type="email" required />
+                <input id="Email" class="form-control" name="Email" type="email" placeholder="Email" required />
                 <!-- <label for="Email" class="floating-label">Email</label> -->
             </div>   
 
@@ -44,7 +44,7 @@
                 <!-- <label for="Comments" class="floating-label">Comments</label> -->
             </div> 
 
-            <input class="btn btn-primary btn-lg" method="post" asp-controller="Home" asp-action="SendEmail" value="Send Email">
+            <input type="submit" class="btn btn-primary btn-lg" value="Send Email">
         </form>
     </div>
 </div>

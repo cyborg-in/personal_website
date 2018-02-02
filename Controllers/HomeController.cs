@@ -56,41 +56,43 @@ namespace PersonalWebsite.Controllers
             return View();
         }
 
-        public ContentResult Content()
+        public ContentResult Content(string firstName, string lastName, string email, string comments)
         {
-            return Content("<div><h1>This is the header</h1><p>This is a paragraph</p></div>");
+            return Content($"<div><h1>{ firstName } { lastName }</h1><h2> { email }</h2><p>{ comments }</p></div>");
         }
 
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        // public async Task<IActionResult> Create ([Bind("FirstName, LastName, Email, Comments")] Contact contact)
-        // {
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task Create ([Bind("FirstName, LastName, Email, Comments")] Contact contact)
+        {
+            
 
-        // }
+            _context.Contacts.Add(contact);
+            await _context.SaveChangesAsync();
 
+            SendEmail(contact);
+            RedirectToAction("Contact", "Home");
+        }
 
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        // public async Task SendEmail (Contact contact)
-        // {
-        //     SmtpClient client = new SmtpClient();
-        //     client.EnableSsl = true;
-        //     client.Port = 587;
-        //     client.Credentials = new NetworkCredential("mcataloe@gmail.com", "Superbad@062909");
+        private async Task SendEmail (Contact contact)
+        {
+            NetworkCredential credential = new NetworkCredential();
+            credential.Password = Directory.
 
-        //     // client.Send("mcataloe@gmail.com", "personnel.rso@gmail.com", "Subject here", "Body of text here");
+            SmtpClient client = new SmtpClient();
+                client.EnableSsl = true;
+                client.Port = 587;
+                client.Credentials = new NetworkCredential("mcataloe@gmail.com", "");
 
-        //     MailMessage mail = new MailMessage();
-        //     mail.From = new MailAddress("mcataloe@gmail.com", "Matthew Cataldi");
-        //     mail.To.Add(new MailAddress("personnel.rso@gmail.com", "Personnel Manager (RSO)"));
-        //     mail.CC.Add(new MailAddress("renovostrings@gmail.com", "Renovo String Orchestra"));
-        //     mail.Subject = "Here is the subject of the email";
-        //     mail.Body = "<h1>Here is the header</h1><p>Here is the body of the email.</p>";
-        //     mail.IsBodyHtml = true;
+            MailMessage mail = new MailMessage();
+                mail.From = new MailAddress("mcataloe@gmail.com", "Matthew Cataldi");
+                mail.To.Add(new MailAddress(contact.Email, contact.FirstName + " " + contact.LastName));
+                mail.Subject = "Thanks for your email!";
+                mail.Body = $"<h1>Thanks for your email!</h1><p>We'll get back to you as soon as possible.  In the meantime, we just want to make sure we have your information correct.</p><address>{ contact.FirstName } { contact.LastName }<br />{ contact.Email }<br />{ contact.Comments }</address>";
+                mail.IsBodyHtml = true;
 
-        //     client.Send(mail);
-
-        // }
+            await client.SendMailAsync(mail);
+        }
 
         public IActionResult Error()
         {

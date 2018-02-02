@@ -1,6 +1,10 @@
 ﻿$(function() {
 
-    $("#button").on("click", function(){
+    $("input[type=submit]").on("submit", function(event){
+        event.preventDefault();
+
+        console.log(event); 
+
         var request = $.ajax({
             url: "/home/content"
         });
@@ -9,14 +13,11 @@
             console.log("success");
 
             var insertHere = document.getElementById("insertHere");
-            console.log(insertHere);
-
             insertHere.innerHTML = data;
-
         });
 
         request.fail(function(){
-            console.log("fail")
+            console.log("fail");
         });
 
     });

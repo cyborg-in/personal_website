@@ -9,6 +9,8 @@ namespace PersonalWebsite.Data
         public WebsiteContext(DbContextOptions<WebsiteContext> options) : base (options) { }
 
         public DbSet<Skill> Skills { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        
 
     }
 }
