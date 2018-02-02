@@ -11,25 +11,37 @@
             <abbr title="Email Address">e.</abbr>&nbsp;<a href="mailto:mcataloe@gmail.com?subject=Solution%20Inquiry" target="_blank">mcataloe@gmail.com</a>
         </address>
     </div>
+
+    <button id="button" class="btn btn-primary">Click Me</button>
+
+    <div id="insertHere">
+
+    </div>
+
 </div>
+
 
 <div class="container">
     <div class="col-sm-6">
         <form asp-controller="Home" asp-action="SendEmail" method="post">
             <div class="form-group">
-                <input class="form-control" name="FirstName" type="text" placeholder="First Name" required />
+                <input id="FirstName" class="form-control" name="FirstName" type="text" required />
+                <label for="FirstName" class="floating-label">First Name</label>
             </div>
 
             <div class="form-group">
-                <input class="form-control" name="LastName" type="text" placeholder="Last Name" required />
+                <input id="LastName" class="form-control" name="LastName" type="text" required />
+                <!-- <label for="LastName" class="floating-label">Last Name</label> -->
             </div>
 
             <div class="form-group">
-                <input class="form-control" name="Email" type="email" placeholder="Email" required />
+                <input id="Email" class="form-control" name="Email" type="email" required />
+                <!-- <label for="Email" class="floating-label">Email</label> -->
             </div>   
 
             <div class="form-group">
-                <textarea class="form-control" name="Comments" placeholder="Type your questions here" required></textarea>
+                <textarea id="Comments" class="form-control" name="Comments" placeholder="Jenna is hot." required></textarea>
+                <!-- <label for="Comments" class="floating-label">Comments</label> -->
             </div> 
 
             <input class="btn btn-primary btn-lg" method="post" asp-controller="Home" asp-action="SendEmail" value="Send Email">

@@ -6,7 +6,59 @@
 }
 
 .nav {
-    background-color: #4C4B53;
+    z-index: 1;
+}
+
+.navbar {
+    background-color: rgba(224, 220, 255, 0.15) !important;
+}
+
+.navbar-brand {
+    font-weight: bolder;
+}
+
+.nav-item:hover {
+    text-decoration: underline;
+    transition: 0.2s;
+}
+
+/* input:focus {
+    baseline-shift: -10%;
+} */
+
+
+input:focus ~ .floating-label
+{
+  top: 1px;
+  bottom: 10px;
+  left: 19px;
+  font-size: 10px;
+  opacity: 1;
+  color: black;
+  letter-spacing: none;
+}
+
+.form-group {
+    display: block;
+}
+
+input:not(:focus):valid ~ .floating-label {
+    display: none;
+}
+
+.floating-label {
+  position: absolute;
+  pointer-events: none;
+  left: 25px;
+  top: 8px;
+  color: gray;
+  transition: 0.3s ease-in-out all;
+}
+
+
+div.carousel-item img {
+    width: auto;
+    height: 500px;
 }
 
 .orange-color {
@@ -89,10 +141,6 @@ div .about p {
     transform: translate(-50%, -50%);
 }
 
-.navbar {
-    z-index: 1;
-}
-
 .caption {
     position: absolute;
     left: 0;
@@ -158,10 +206,6 @@ div .about p {
     color: black;
 }
 
-.nav-item:hover {
-    text-decoration: underline;
-    transition: 0.2s;
-}
 
 .alert .btn .text {
     background-color: rgba

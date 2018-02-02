@@ -10,13 +10,18 @@ using System.Net.Security;
 using System.Security;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using PersonalWebsite.Data;
 using PersonalWebsite.Models;
 
 namespace PersonalWebsite.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+
+        public HomeController(WebsiteContext context) : base(context) { }
+
         public IActionResult Index()
         {
             return View();
@@ -29,11 +34,12 @@ namespace PersonalWebsite.Controllers
             return View();
         }
 
-        public IActionResult Stacks()
+        public async Task<IActionResult> Stacks()
         {
             ViewData["Message"] = "Stacks Page";
+            var stacks = await _context.Skills.ToListAsync();
 
-            return View();
+            return View(stacks);
         }
 
         public IActionResult Projects()
@@ -49,6 +55,18 @@ namespace PersonalWebsite.Controllers
 
             return View();
         }
+
+        public ContentResult Content()
+        {
+            return Content("<div><h1>This is the header</h1><p>This is a paragraph</p></div>");
+        }
+
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // public async Task<IActionResult> Create ([Bind("FirstName, LastName, Email, Comments")] Contact contact)
+        // {
+
+        // }
 
 
         // [HttpPost]
