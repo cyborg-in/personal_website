@@ -37,14 +37,10 @@ namespace PersonalWebsite
 
         public static IWebHost BuildWebHost(string[] args) =>
 
-            // new WebHostBuilder()
-            //     .UseKestrel()
-            //     .UseContentRoot(Directory.GetCurrentDirectory())
-            //     .UseIISIntegration()
-            //     .UseStartup<Startup>()
-            //     .Build();
-
             WebHost.CreateDefaultBuilder(args)
+                .UseKestrel()
+                .UseIISIntegration()
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .Build();
     }

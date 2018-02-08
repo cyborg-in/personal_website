@@ -14,10 +14,11 @@ namespace PersonalWebsite.Data
         { 
 
             context.Database.EnsureCreated();
+            // context.Database.Migrate();
 
             var newSkill = new Skill();
-            newSkill.Name = "NOT A SKILL";
-            newSkill.Begin = new DateTime(2012, 1, 2);
+            newSkill.Name = "JSON";
+            newSkill.Begin = new DateTime(2017, 1, 2);
             newSkill.Type = SkillType.Language;
             newSkill.Level = SkillLevel.Basic;
 

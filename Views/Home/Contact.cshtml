@@ -1,4 +1,6 @@
-﻿<div class="container">
+﻿@model PersonalWebsite.Models.Contact
+
+<div class="container">
     <div style="padding-top: 70px;">
         <h2>@ViewData["Message"]</h2>
 
@@ -12,35 +14,28 @@
         </address>
     </div>
 
-    <button id="button" class="btn btn-primary">Click Me</button>
-
-    <div id="insertHere">
-
-    </div>
-
 </div>
-
 
 <div class="container">
     <div class="col-sm-6">
-        <form asp-controller="Home" asp-action="SendEmail" method="post">
+        <form asp-controller="Home" asp-action="Create" method="post">
             <div class="form-group">
-                <input id="FirstName" class="form-control" name="FirstName" type="text" placeholder="First Name" required />
+                <input asp-for="FirstName" class="form-control" placeholder="First Name"/>
                 <!-- <label for="FirstName" class="floating-label">First Name</label> -->
             </div>
 
             <div class="form-group">
-                <input id="LastName" class="form-control" name="LastName" type="text" placeholder="Last Name" required />
+                <input asp-for="LastName" class="form-control" placeholder="Last Name"/>
                 <!-- <label for="LastName" class="floating-label">Last Name</label> -->
             </div>
 
             <div class="form-group">
-                <input id="Email" class="form-control" name="Email" type="email" placeholder="Email" required />
+                <input asp-for="Email" class="form-control" placeholder="Email" />
                 <!-- <label for="Email" class="floating-label">Email</label> -->
             </div>   
 
             <div class="form-group">
-                <textarea id="Comments" class="form-control" name="Comments" placeholder="Jenna is hot." required></textarea>
+                <textarea asp-for="Comments" class="form-control" placeholder="Enter your comments here"></textarea>
                 <!-- <label for="Comments" class="floating-label">Comments</label> -->
             </div> 
 

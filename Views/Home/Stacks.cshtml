@@ -1,4 +1,4 @@
-﻿@model List<Stack>
+﻿@model IEnumberable<PersonalWebsite.Models.Stack>
 @{
     ViewData["Title"] = "Stacks";
 }
@@ -13,4 +13,12 @@
     <div class="my-story">
         <p>Here's some text about the stacks I have learned. Blah Blah blah.</p>
     </div>
+
+    <ul>
+    @foreach(var stack in Model)
+    {
+        <li>@stack.</li>
+    }
+    </ul>
+
 </div>
