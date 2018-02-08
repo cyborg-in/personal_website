@@ -1,4 +1,4 @@
-﻿@model IEnumberable<PersonalWebsite.Models.Stack>
+﻿@model IEnumerable<PersonalWebsite.Models.Skill>
 @{
     ViewData["Title"] = "Stacks";
 }
@@ -15,9 +15,9 @@
     </div>
 
     <ul>
-    @foreach(var stack in Model)
+    @foreach (var skill in Model)
     {
-        <li>@stack.</li>
+        <li>@skill.Name</li>
     }
     </ul>
 

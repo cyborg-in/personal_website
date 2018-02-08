@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
@@ -37,9 +38,8 @@ namespace PersonalWebsite.Controllers
         public async Task<IActionResult> Stacks()
         {
             ViewData["Message"] = "Stacks Page";
-            var stacks = await _context.Skills.ToListAsync();
-
-            return View(stacks);
+            IEnumerable<Skill> skills = await _context.Skills.OrderBy(s => s.TypeId).ToListAsync();
+            return View(skills);
         }
 
         public IActionResult Projects()
@@ -79,7 +79,7 @@ namespace PersonalWebsite.Controllers
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
 
-            RedirectToAction("Contact", "Home");
+            RedirectToAction("Index");
         }
 
         private async Task SendEmailAsync (Contact contact)
@@ -92,7 +92,6 @@ namespace PersonalWebsite.Controllers
                 client.EnableSsl = Configuration.GetValue<bool>("EmailSettings:SSL");
                 client.Port = Configuration.GetValue<int>("EmailSettings:Port");
                 client.Credentials = credential;
-
 
             MailMessage mail = new MailMessage();
                 mail.From = new MailAddress(Configuration.GetValue<string>("EmailSettings:Username"), Configuration.GetValue<string>("EmailSettings:DisplayName"));

@@ -21,22 +21,18 @@
         <form asp-controller="Home" asp-action="Create" method="post">
             <div class="form-group">
                 <input asp-for="FirstName" class="form-control" placeholder="First Name"/>
-                <!-- <label for="FirstName" class="floating-label">First Name</label> -->
             </div>
 
             <div class="form-group">
                 <input asp-for="LastName" class="form-control" placeholder="Last Name"/>
-                <!-- <label for="LastName" class="floating-label">Last Name</label> -->
             </div>
 
             <div class="form-group">
                 <input asp-for="Email" class="form-control" placeholder="Email" />
-                <!-- <label for="Email" class="floating-label">Email</label> -->
             </div>   
 
             <div class="form-group">
                 <textarea asp-for="Comments" class="form-control" placeholder="Enter your comments here"></textarea>
-                <!-- <label for="Comments" class="floating-label">Comments</label> -->
             </div> 
 
             <input type="submit" class="btn btn-primary btn-lg" value="Send Email">

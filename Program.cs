@@ -20,15 +20,16 @@ namespace PersonalWebsite
 
             using (var scope = host.Services.CreateScope())
             {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<WebsiteContext>();
                 try
                 {
-                    var context = host.Services.GetRequiredService<WebsiteContext>();
                     DbInitializer.SeedDatabase(context);
                 }
                 catch (Exception ex)
                 {
-                    var logger = host.Services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred while seeding the database.");
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred seeding the DB.");
                 }
             }
 
@@ -39,8 +40,8 @@ namespace PersonalWebsite
 
             WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
-                .UseIISIntegration()
-                .UseContentRoot(Directory.GetCurrentDirectory())
+                // .UseIISIntegration()
+                // .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .Build();
     }
