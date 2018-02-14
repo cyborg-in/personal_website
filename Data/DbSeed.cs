@@ -19,9 +19,12 @@ namespace PersonalWebsite.Data
                 return;
             }
 
-            context.Skills.Add(new Skill() { Name = "JSON", Begin = new DateTime(2013, 03, 02), LevelId = SkillLevel.Intermediate, TypeId = SkillType.Format } ); 
-            context.Skills.Add(new Skill() { Name = "EDI", Begin = new DateTime(2013, 03, 02), LevelId = SkillLevel.Basic, TypeId = SkillType.Format } ); 
-            context.Skills.Add(new Skill() { Name = "XML", Begin = new DateTime(2013, 03, 02), LevelId = SkillLevel.Basic, TypeId = SkillType.Format } ); 
+            context.Skills.Add(new Skill() { Name = "JSON", Begin = new DateTime(2017, 06, 15), LevelId = SkillLevel.Intermediate, TypeId = SkillType.Format, Comments = "My usage of JSON objects began during my time at DevBootcamp in the summer of 2017.  There we used it with many public APIs including Google, Facebook, LinkedIn and various other types." } ); 
+            
+            context.Skills.Add(new Skill() { Name = "EDI", Begin = new DateTime(2017, 10, 31), LevelId = SkillLevel.Basic, TypeId = SkillType.Format, Comments = "My usage of EDI began with my first job at Associated Global Systems.  Much of the transportation industry still relies on this form of file transfers to keep track of transactions."} ); 
+            
+            context.Skills.Add(new Skill() { Name = "XML", Begin = new DateTime(2014, 03, 02), LevelId = SkillLevel.Basic, TypeId = SkillType.Format, Comments = "I first began with XML about a few years go in the solution I created for the Rockford Symphony.  By using XML, I was able to consume the Google Distance Matrix API to use in calcluating mileage for musicians" } ); 
+           
             context.Skills.Add(new Skill() { Name = "VBA", Begin = new DateTime(2013, 03, 15), LevelId = SkillLevel.Expert, TypeId = SkillType.Language } ); 
             context.Skills.Add(new Skill() { Name = "SQL", Begin = new DateTime(2013, 03, 15), LevelId = SkillLevel.Expert, TypeId = SkillType.Language } ); 
             context.Skills.Add(new Skill() { Name = "VB.NET", Begin = new DateTime(2014, 03, 15), LevelId = SkillLevel.Intermediate, TypeId = SkillType.Language } ); 

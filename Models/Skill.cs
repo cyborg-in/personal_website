@@ -17,6 +17,8 @@ namespace PersonalWebsite.Models
         public SkillLevel LevelId { get; set; }
         
         public SkillType TypeId { get; set; }
+        public string Comments { get; set; }
+        
     }
 
     public enum SkillLevel 

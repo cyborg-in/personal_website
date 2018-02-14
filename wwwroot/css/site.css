@@ -206,10 +206,13 @@ div .about p {
     color: black;
 }
 
-
 .alert .btn .text {
     background-color: rgba
 }
+
+/* .popover {
+    color: black;
+} */
 
 @font-face {
     font-family: PillGothic;

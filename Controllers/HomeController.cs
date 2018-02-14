@@ -63,23 +63,26 @@ namespace PersonalWebsite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task Create([Bind("FirstName, LastName, Email, Comments")] Contact contact)
+        public async Task<IActionResult> Create([Bind("FirstName, LastName, Email, Comments")] Contact contact)
         {
-            try 
+            try
             {
                 if (ModelState.IsValid)
                 {
-                    _context.Contacts.Add(contact);
+                    _context.Add(contact);
                     await _context.SaveChangesAsync();
                     await SendEmailAsync(contact);
+                    return RedirectToAction(nameof(Index));
                 }
             }
-            catch // (DbUpdateException ex)
+            catch (DbUpdateException /* ex */)
             {
-                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+                //Log the error (uncomment ex variable name and write a log.
+                ModelState.AddModelError("", "Unable to save changes. " +
+                    "Try again, and if the problem persists " +
+                    "see your system administrator.");
             }
-
-            RedirectToAction("Index");
+            return View(contact);
         }
 
         private async Task SendEmailAsync (Contact contact)
@@ -92,6 +95,7 @@ namespace PersonalWebsite.Controllers
                 client.EnableSsl = Configuration.GetValue<bool>("EmailSettings:SSL");
                 client.Port = Configuration.GetValue<int>("EmailSettings:Port");
                 client.Credentials = credential;
+                client.Host = Configuration.GetValue<string>("EmailSettings:SMTP");
 
             MailMessage mail = new MailMessage();
                 mail.From = new MailAddress(Configuration.GetValue<string>("EmailSettings:Username"), Configuration.GetValue<string>("EmailSettings:DisplayName"));

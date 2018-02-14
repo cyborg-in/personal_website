@@ -40,8 +40,8 @@ namespace PersonalWebsite
 
             WebHost.CreateDefaultBuilder(args)
                 .UseKestrel()
-                // .UseIISIntegration()
-                // .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseIISIntegration()
+                .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseStartup<Startup>()
                 .Build();
     }

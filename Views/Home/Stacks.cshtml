@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PersonalWebsite.Models.Skill>
+﻿@model IEnumerable<Skill>
 @{
     ViewData["Title"] = "Stacks";
 }
@@ -11,14 +11,28 @@
 
 <div class="container">
     <div class="my-story">
-        <p>Here's some text about the stacks I have learned. Blah Blah blah.</p>
+        <p>Here's some text about the stacks I have learned over the past years.  They are divided into parts with relative experience beside them and what kind of skills they are.  Still working on creating a sort table, but that will come shortly!</p>
     </div>
 
-    <ul>
-    @foreach (var skill in Model)
-    {
-        <li>@skill.Name</li>
-    }
-    </ul>
-
+    <div class="container">
+        <table class="table table-striped table-dark table-condensed table-hover">
+            <tr>
+                <th>Skill</th>
+                <th>From</th>
+                <th>Type</th>
+                <th>Level</th>
+            </tr>
+        @foreach (var skill in Model)
+        {
+            <tr>
+                <td data-toggle="popover" data-content="@skill.Comments" title="Summary" data-trigger="hover">@skill.Name</td>
+                <td>@(
+                    skill.Begin.ToString("dddd, MMM dd, yyyy")
+                )</td>
+                <td>@skill.LevelId</td>
+                <td>@skill.TypeId</td>
+            </tr>
+        }
+        </table>
+    </div>
 </div>
