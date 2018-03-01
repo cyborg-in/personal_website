@@ -8,7 +8,7 @@ namespace PersonalWebsite.Controllers
 {
     public class BaseController : Controller
     {
-        protected readonly IConfiguration _configuration = new ConfigurationBuilder()
+        protected readonly IConfiguration _configuration = new ConfigurationBiulder()
                                                             .SetBasePath(Directory.GetCurrentDirectory())
                                                             .AddJsonFile("appsettings.json")
                                                             .Build();
